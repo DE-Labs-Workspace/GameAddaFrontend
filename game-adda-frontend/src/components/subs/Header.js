@@ -20,14 +20,16 @@ const Header = ({ bal }) => {
 
 	return (
 		<div id='recharge'>
-			<h1>Available Balance: ${balance}</h1>
-			<button className='add' onClick={handleAdd}>
-				Recharge
-			</button>
-			&nbsp;
-			<button className='sub' onClick={handleSub}>
-				Withdraw
-			</button>
+			<h1>Available Balance: ₹{balance}</h1>
+			<div>
+				<button className='add' onClick={handleAdd}>
+					Recharge
+				</button>
+				&nbsp;
+				<button className='sub' onClick={handleSub}>
+					Withdraw
+				</button>
+			</div>
 		</div>
 	);
 };

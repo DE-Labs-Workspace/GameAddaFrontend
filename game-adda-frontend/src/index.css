@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 body {
+	font-size: 10px;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,31 +15,197 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+	display: contents;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
 
+/* Header section */
 #recharge {
 	min-height: 20vh;
-	background: green;
-	padding: 10px;
+	padding: 20px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--var-hv-color);
+	background-image: var(--var-hv-gradient);
+	color: var(--var-white);
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#recharge h1 {
+	font-size: 1.5rem;
 }
 
 #recharge button {
 	padding: 10px;
-	font-size: larger;
+	font-size: 1.1rem;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	text-transform: uppercase;
-	min-width: 190px;
-	border-radius: 8px;
+	min-width: 150px;
+	border: none;
+	border-radius: 10px;
+	color: var(--var-white);
+	background-color: var(--var-gray);
+	transition: all 300ms;
 }
 
-.add {
-	background-color: yellow;
+#recharge button:hover {
+	background-color: var(--var-bg-color);
+	background-image: var(--var-bg-gradient);
+	color: var(--var-black);
 }
 
-.sub {
-	background-color: orange;
+/* Footer section */
+.footer {
+	font-size: 1.2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background-color: var(--var-bg-color);
+	background-image: var(--var-bg-gradient);
+	position: sticky;
+	z-index: 100;
 }
+
+.footer li {
+	flex: 1;
+	text-align: center;
+	padding: 10px;
+	transition: all 300ms;
+	color: var(--var-black);
+}
+
+.footer-title {
+	display: none;
+}
+
+.footer li:hover {
+	background-color: var(--var-hv-color);
+	background-image: var(--var-hv-gradient);
+}
+
+/* Navbar section */
+.navbar {
+	font-size: 1.2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background-color: var(--var-bg-color);
+	background-image: var(--var-bg-gradient-flipped);
+	box-shadow: 0px 0px 5px 0px var(--var-gray);
+	position: sticky;
+	z-index: 100;
+	top: 0;
+}
+
+.navbar li {
+	flex: 1;
+	text-align: center;
+	padding: 10px;
+	transition: all 300ms;
+	color: var(--var-black);
+}
+
+.navbar li:hover {
+	color: var(--var-white);
+}
+
+.navbar li.brand {
+	text-align: left;
+	font-weight: bold;
+	max-width: fit-content;
+	font-size: 1.6rem;
+	padding-block: 0;
+}
+
+.navbar li.nav {
+	max-width: 30px;
+}
+
+.navbar li.nav:hover {
+	background-color: var(--var-hv-color);
+	background-image: var(--var-hv-gradient);
+}
+
+/* Sidebar section */
+.sidebar {
+	position: fixed;
+	float: right;
+	min-height: 100vh;
+	max-height: 100vh;
+	max-width: 100vw;
+	right: -40px;
+	background-color: transparent;
+	color: var(--var-white);
+	transition: all 300ms;
+	padding: 10px;
+	overflow-x: auto;
+	box-sizing: border-box;
+}
+
+.sidebar > * {
+	display: none;
+}
+
+.sidebar.show {
+	right: 0;
+	background-color: var(--var-gray);
+}
+
+.sidebar.show > * {
+	display: block;
+}
+
+:root {
+	--var-black: #222;
+	--var-gray: #4c4c4c;
+	--var-white: #eee;
+	--var-bg-color: #fbda61;
+	--var-bg-gradient: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+	--var-bg-gradient-flipped: linear-gradient(-45deg, #fbda61 0%, #ff5acd 100%);
+	--var-hv-color: #0093e9;
+	--var-hv-gradient: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+/* Media Queries */
+
+/* Media query for screen size greater than 520px screen - Mobile view */
+@media screen and (min-width: 520px) {
+	body {
+		font-size: 15px;
+	}
+
+	.sidebar {
+		max-width: 300px;
+	}
+
+	/* .sidebar.show {
+		left: 300px;
+	} */
+
+	.footer li {
+		display: flex;
+		column-gap: 10px;
+		justify-content: center;
+	}
+
+	.footer-title {
+		display: block;
+	}
+}
+
+/* Disable blur for button on tab & mobile view  */
+/*	Footer names be removed for mobile view      */
